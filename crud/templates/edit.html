@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body style="background: url('/static/images/dash.jpg') no-repeat center fixed;background-size: cover;">
+
+<div style="color:  rgb(195, 232, 249);text-shadow: 1px 1px black;">
+<h2 style="text-align: center;">Update Details</h2>
+<div class="container my-4" style="max-width: 400px;;">
+    <form method="POST"  action="/update/{{employee.id}}"style="text-align:center" >
+        {% if employee %}
+        {% csrf_token %}
+        <div>
+            <label for="eid">Employee Id</label>
+            <input type="text" class="form-control my-2" name="eid" value="{{employee.eid}}" />
+        </div>
+        <br>
+        <div>
+            <label for="ename">Employee Name</label>
+            <input type="text" class="form-control my-2" name="ename" value="{{employee.ename}}" />
+        </div>
+        <br>
+        <div>
+            <label for="erole">Employee Role</label>
+            <input type="text" class="form-control my-2" name="erole" value="{{employee.erole}}" />
+        </div>
+        <br>
+        <div>
+            <label for="eemail">Employee Email</label>
+            <input type="email" class="form-control my-2" name="eemail" value="{{employee.eemail}}" />
+        </div>
+        <br>
+        <div>
+            <label for="econtact">Employee Contact</label>
+            <input type="text" class="form-control my-2" name="econtact" value="{{employee.econtact}}" />
+        </div>
+        <div class="container text-center my-4">
+            <button class="btn btn" style="background-color: rgba(124, 212, 253, 0.955);color: black;"  type="submit">Update</button>
+        </div>
+    </form>
+    {% endif %}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+</html>

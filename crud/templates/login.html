@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body style="background: url('static/images/log.jpg') no-repeat center fixed;background-size: cover;">
+    <div class="container">
+        <h1 style="padding-top: 2rem;color:white;text-align: center;">LOGIN</h1>
+        {% for message in messages %}
+
+        <div class="alert alert-danger mt-5 mx-auto" style="text-align: center;max-width: 400px;">
+            {{ message }}
+            <a class="" href="{% url 'login' %}" style="text-decoration: none;color: rgb(162, 16, 16);padding-left: 50px;" data-dismiss="alert">x</a>  
+        </div>
+
+
+        {% endfor %}
+        <form class="was-validated" method="post" style="align-content: center;padding-top: 1rem;">
+            {% csrf_token %}
+            {% for emp in form %}
+            <div class="form-group my-4 mx-auto" style="max-width: 400px;">
+                <label for="{{emp.id_for_label}}" style="padding-bottom:1rem;color:white ;">{{emp.label}}</label>
+                {{emp |add_class:"form-control"}}
+                <div class="invalid-feedback">
+                    Enter a valid input
+                </div>
+            </div>
+            {% endfor %}
+
+            <div style="text-align: center;">
+                <button type="submit" style="background-color:rgb(67, 133, 190) ;color: white;"
+                    class="btn btn-info">Login</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous">
+    </script>
+
+</body>
+{% endblock %}
+
+</html>
